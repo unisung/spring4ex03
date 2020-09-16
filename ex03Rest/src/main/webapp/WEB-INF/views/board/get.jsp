@@ -98,7 +98,6 @@
 
 
 
-
 <div class='row'>
 	<div class='col-lg-12'>
 		
@@ -313,6 +312,22 @@ replyPageFooter.on("click","li a",function(e){
 	showList(pageNum);
 	
 });
+</script>
+<script>
+//모달 객체 얻기
+var modal=$(".modal");
+//모달 input태그 얻기
+var modalInputReply=modal.find("input[name='reply']");
+var modalInputReplyer=modal.find("input[name='replyer']");
+var modalInputRepyDate=modal.find("input[name='replyDate']");
+
+//모달내 버튼 객체 얻기
+var modalModBtn=$('#modalModBtn');
+var modalRemoveBtn=$('#modalRemoveBtn');
+var modalRegisterBtn=$('#modelRegisterBtn');
+
+
+
 
 </script>
 
