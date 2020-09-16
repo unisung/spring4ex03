@@ -28,4 +28,11 @@
      where bno=#{bno}
       order by rno asc
   </select>
+  
+  <select id="getCountByBno" resultType="int">
+   <![CDATA[
+   		select count(*) from tbl_reply where bno=#{bno}
+   ]]>
+  </select>
+  
   </mapper>

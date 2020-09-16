@@ -21,8 +21,9 @@ public interface ReplyMapper {
 	public int update(ReplyVO vo);
 	
     //게시글의  댓글 리스트 조회
-//	public List<ReplyVO> getListWithPaging(@Param("cri") Criteria cri,
-//																	@Param("bno") Long bno);
-	public ReplyPageDTO getListWithPaging(@Param("cri") Criteria cri,
-																	@Param("bno") Long bno);
+	public List<ReplyVO> getListWithPaging(@Param("cri") Criteria cri,
+   																	@Param("bno") Long bno);
+	//댓글 건수 조회
+	public int getCountByBno(Long bno);
+	
 }

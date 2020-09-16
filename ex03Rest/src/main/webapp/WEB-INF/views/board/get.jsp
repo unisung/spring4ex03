@@ -190,7 +190,7 @@ function showList(page){
                  str+=" <div><div class='header'><strong class='primary-font'>["
                         +list[i].rno+"]"+list[i].replyer+"</strong>";
                  str+=" <small class='pull-right text-muted'>"
-                        +replyService.displayTime(list[i].replyDate)+"</small></div>";
+                        /* +replyService.displayTime(list[i].replyDate) */+"</small></div>";
                  str+=" <p>"+list[i].reply+"</p></div></li>";
                }
 
