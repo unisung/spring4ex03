@@ -59,9 +59,6 @@
 	</div><!-- end panel -->
 
 </div><!--  /.row -->
-
-<script type="text/javascript" src="/resources/js/reply.js"></script>
-
 <!-- 수정/리스트 페이지로이동 처리 스크립트  -->
 <script>
 $(document).ready(function(){
@@ -75,9 +72,11 @@ $(document).ready(function(){
 			operForm.attr("action","/board/list").submit();
 		 });
 });
+</script>
+<script>
 
 </script>
-
+<script type="text/javascript" src="/resources/js/reply.js"></script>
 <script>
 console.log("===============");
 console.log("JS TEST");
@@ -87,12 +86,22 @@ var bnoValue = '<c:out value="${board.bno}"/>';
 //for replyService add test
  replyService.add(
   
-  {reply:"JS Test", replyer:"tester", bno:bnoValue}
+  {reply:"JS Test", 
+	replyer:"tester", 
+	bno:bnoValue}//객체
   ,
-  function(result){ 
+  function(result){ //함수
     alert("RESULT: " + result);
   }
 ); 
+</script>
+<script>
+replyService.getList({bno:bnoValue,page:1},
+		                        function(list){
+	                   for(var i=0,len=list.length||0;i<len;i++){
+                                console.log(list[i]);
+		}
+});
 
 </script>
 <%@ include file="../includes/footer.jsp"%>
