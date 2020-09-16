@@ -197,18 +197,81 @@ function showList(page){
                //ul에 추가하기
            replyUL.html(str);
            
-           
-         }
-
-               
+           showReplyPage(replyCnt);
+	 }         
      
 			 );
 }
+</script>
+<script>
+var pageNum=1;
+var replyPageFooter=$(".panel-footer");
+function showReplyPage(replyCnt){
+        
+	   //끝번호
+	var endNum=Math.ceil(pageNum/10.0) *10;
+	//시작번호
+	var startNum=endNum-9;
+   //이전페이지
+	var prev=startNum !=1;
+	//다음페이지 여부
+	var next=false;
+
+	console.log(endNum, startNum, prev,next);
+
+	//페이지 조정
+	if(endNum*10 >=replyCnt){
+        endNum=Math.ceil(replyCnt/10.0);
+	}
+
+	//다음페이지  true로
+	if(endNum *10 <replyCnt){
+        next=true;
+		}
+
+	var str="<ul class='pagination pull-right'>";
+
+	if(prev){
+		  str+="<li class='page-item'><a class='page-link' href='"
+			    +(startNum-1)+"'>이전페이지</a></li>";
+		}
+
+    for(var i=startNum; i<=endNum;i++){
+          var active = pageNum==i?"active":"";
+
+          str+="<li class='page-item " +active+"'><a class='page-link' href='"+i+"'>"+i+"</a></li>";
 
 
+        }
 
+	
+	if(next){
+		str+="<li class='page-item'><a class='page-link' href='"
+			   +(entNum+1)+"'>다음페이지</a></li>";
+		}
 
+	str +="</ul></div>";
 
+	console.log(str);
+
+	replyPageFooter.html(str);
+	
+}
+
+//이벤트 위임-부모요소에 이벤트 리스너 등록 - 동적생성된 자식요소에 이벤트 처리 
+replyPageFooter.on("click","li a",function(e){
+	e.preventDefault();//기본동작 정지
+	console.log("page click");
+
+	var targetPageNum=$(this).attr("href");//this <- li a요소
+
+	console.log("targetPageNum: "+targetPageNum);
+
+	pageNum=targetPageNum;
+
+	showList(pageNum);
+	
+});
 
 </script>
 

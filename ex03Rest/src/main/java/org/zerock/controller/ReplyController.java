@@ -72,6 +72,8 @@ log.info("get Reply List bno: "+bno);
 
 log.info("cri:"+cri);
 
+ReplyPageDTO dto=service.getListWithPaging(cri, bno);
+log.info("ReplyDTO: "+dto);
 return new ResponseEntity<>(service.getListWithPaging(cri, bno),
 	                                          HttpStatus.OK);
 
