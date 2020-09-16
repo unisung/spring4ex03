@@ -63,7 +63,7 @@ var replyService=(function(){
         type:'put',
         url:'/replies/'+reply.rno,
         data:JSON.stringify(reply),
-        contetnType:'application/json; charset=utf-8',
+        contentType:'application/json; charset=utf-8',
         success:function(result, status, xhr){
                 if(callback){
                     callback(result);
