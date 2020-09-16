@@ -75,7 +75,6 @@ $(document).ready(function(){
 </script>
 <script>
 
-
 </script>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <script>
@@ -127,6 +126,12 @@ replyService.update(
 	  alert("수정완료....");
 	  }
 );
+</script>
+<script>
+replyService.get(43,function(data){
+	   console.log(data);
+});
+
 </script>
 
 <%@ include file="../includes/footer.jsp"%>
