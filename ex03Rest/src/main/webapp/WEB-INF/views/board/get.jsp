@@ -327,7 +327,23 @@ var modalRemoveBtn=$('#modalRemoveBtn');
 var modalRegisterBtn=$('#modelRegisterBtn');
 
 
+$(".chat").on("click","li",function(e){
+   var rno=$(this).data("rno");// this-> 클릭한 li
 
+   replyService.get(rno,function(reply){
+	   modalInputReply.val(reply.reply);
+	   modalInputReply.val(reply.replyer);
+	   modalInputRepyDate.val(replyService.displayTime(reply.replyDate)).attr("readonly","readonly");
+	   modal.data("rno",reply.rno);
+
+	   modal.find("button[id!='modalCloseBtn']").hide();//닫기 버튼만 보여줌
+	   modalModBtn.show();
+	   modalRemoveBtn.show();
+
+	   $(".modal").modal("show");
+	   
+	   });
+});
 
 </script>
 
