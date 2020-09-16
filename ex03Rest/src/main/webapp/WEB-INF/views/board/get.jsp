@@ -75,6 +75,7 @@ $(document).ready(function(){
 </script>
 <script>
 
+
 </script>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <script>
@@ -117,8 +118,15 @@ replyService.getList({bno:bnoValue,page:1},
           alert('ERROR....');
           }
 );
-
-
-
 </script>
+<script>
+//43번 댓글 수정
+replyService.update(
+  {rno:43, bno:bnoValue, reply:"ajax로 댓글 수정...."},
+  function(result){
+	  alert("수정완료....");
+	  }
+);
+</script>
+
 <%@ include file="../includes/footer.jsp"%>
