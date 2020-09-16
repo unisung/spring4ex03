@@ -59,6 +59,30 @@
 	</div><!-- end panel -->
 
 </div><!--  /.row -->
+
+<div class='row'>
+	<div class='col-lg-12'>
+		
+	<div class='panel panel-default'>
+	   <div class='panel-heading'>
+	     <i class="fa fa-comments fa-fw"></i>댓글
+	<button id='addReplyBtn' class="btn btn-primary btn-xs pull-right">댓글달기</button>
+	   </div>
+	
+	<div class="panel-body">
+	        <ul class="chat">
+	        
+	        </ul>
+	      
+	</div>
+	   <div class="panel-footer"></div>
+		
+		</div>
+		</div>
+
+</div>
+
+
 <!-- 수정/리스트 페이지로이동 처리 스크립트  -->
 <script>
 $(document).ready(function(){
@@ -131,6 +155,60 @@ replyService.update(
 replyService.get(43,function(data){
 	   console.log(data);
 });
+
+</script>
+<script>
+var replyUL =$(".chat");
+
+showList(1);
+
+function showList(page){
+	 console.log("show list "+page);
+
+	 replyService.getList({bno:bnoValue,page:page||1},
+            function(replyCnt, list){
+				console.log("replyCnt: "+replyCnt);
+				console.log("list: "+list);
+				console.log(list);
+
+                //페이지 번호가 -1로 전달되면 전체 댓글수 재계산후, showList()재호출
+				if(page==-1){
+                     pageNum=Math.ceil(replyCnt/10.0);
+                     showList(pageNum);
+                     return;
+					}
+
+				var str="";
+
+				//결과가 없을 때 리턴
+				if(list==null || list.length==0){
+                     return;
+					}
+                 //댓글 리스트가 있으면
+           for(var i=0,len=list.length||0; i<len; i++){
+                 str+="<li class='left clearfix' data-rno='"+list[i].rno+"'>";
+                 str+=" <div><div class='header'><strong class='primary-font'>["
+                        +list[i].rno+"]"+list[i].replyer+"</strong>";
+                 str+=" <small class='pull-right text-muted'>"
+                        +replyService.displayTime(list[i].replyDate)+"</small></div>";
+                 str+=" <p>"+list[i].reply+"</p></div></li>";
+               }
+
+               //ul에 추가하기
+           replyUL.html(str);
+           
+           
+         }
+
+               
+     
+			 );
+}
+
+
+
+
+
 
 </script>
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.ReplyPageDTO;
 import org.zerock.domain.ReplyVO;
 
 public interface ReplyMapper {
@@ -20,7 +21,8 @@ public interface ReplyMapper {
 	public int update(ReplyVO vo);
 	
     //게시글의  댓글 리스트 조회
-	public List<ReplyVO> getListWithPaging(@Param("cri") Criteria cri,
+//	public List<ReplyVO> getListWithPaging(@Param("cri") Criteria cri,
+//																	@Param("bno") Long bno);
+	public ReplyPageDTO getListWithPaging(@Param("cri") Criteria cri,
 																	@Param("bno") Long bno);
-	
 }
