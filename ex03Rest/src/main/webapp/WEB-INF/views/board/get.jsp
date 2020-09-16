@@ -60,6 +60,45 @@
 
 </div><!--  /.row -->
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="myModalLabel">댓글 팝업창</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                               <label>답변내용</label>
+                                               <input type="text" class="form-control" name='reply' value='새로운 댓글!!!'>
+                                            </div>
+                                            <div class="form-group">
+                                               <label>작성자</label>
+                                               <input type="text" class="form-control" name='replyer' value='작성자'>
+                                            </div>
+                                            <div class="form-group">
+                                               <label>작성일자</label>
+                                               <input type="text" class="form-control" name='replyDate' value='2020-09-16 15:50'>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button id='modalModBtn' type="button" class="btn btn-warning" >수정</button>
+                                            <button id='modalRemoveBtn' type="button" class="btn btn-danger">삭제</button>
+                                            <button id='modelRegisterBtn' type="button" class="btn btn-default" >등록</button>
+                                            <button id='modalCloseBtn' type="button" class="btn btn-primary">닫기</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
+                            </div>
+                            <!-- /.modal -->
+
+
+
+
 <div class='row'>
 	<div class='col-lg-12'>
 		
@@ -81,6 +120,8 @@
 		</div>
 
 </div>
+
+
 
 
 <!-- 수정/리스트 페이지로이동 처리 스크립트  -->
