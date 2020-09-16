@@ -102,6 +102,23 @@ replyService.getList({bno:bnoValue,page:1},
                                 console.log(list[i]);
 		}
 });
+</script>
+<script>
+ //42번 댓글 삭제
+ replyService.remove(42,
+		 function(count){
+           console.log(count);
+
+     	  if(count==='success'){
+         	      alert("REMOVED");
+          }
+        },
+      function(err){
+          alert('ERROR....');
+          }
+);
+
+
 
 </script>
 <%@ include file="../includes/footer.jsp"%>
