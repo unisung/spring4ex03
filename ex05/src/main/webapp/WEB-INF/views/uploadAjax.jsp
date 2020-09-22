@@ -149,7 +149,12 @@ $(document).ready(function(){
 				var str="";
 				$(uploadResultArr).each(function(i,obj){
 						if(!obj.image){//false  이미지가 아니면
-								str+="<li><img src='/resources/img/attach.png'>"+obj.fileName+"</li>";
+                             var fileCallPath = encodeURIComponent(obj.uploadPath+"/"+obj.uuid+"_"+obj.fileName);
+                             var fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");
+
+	    str+="<li><div><a href='/download?fileName="+fileCallPath+"'>"+
+                 "<img src='/resources/img/attach.png'>"+obj.fileName+"</a>"+
+     "<span data-file=\'"+fileCallPath+ "\' data-type='file'>x</span></div></li>";
 							}else{
 
                             var fileCallPath = encodeURIComponent(obj.uploadPath+"/s_"+obj.uuid+"_"+obj.fileName);
