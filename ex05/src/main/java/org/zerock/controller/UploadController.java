@@ -208,6 +208,29 @@ upLoadFileName =uuid.toString()+"_"+multipartFile.getOriginalFilename();
 		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
 	}
 	
+   @PostMapping("/deleteFile")
+   @ResponseBody
+   public ResponseEntity<String> deleteFile(String fileName, String type){
+	   log.info("deleteFile: "+fileName);
+	   
+	   File file;
+	   try {
+		    file=new File("c:\\upload\\"+URLDecoder.decode(fileName,"UTF-8"));
+		    file.delete();
+		    if(type.equals("image")) {
+		    	   String largeFileName = file.getAbsolutePath().replace("s_","");
+		    	   log.info("largeFileName: "+largeFileName);
+		    	   
+		    	   file=new File(largeFileName);
+		    	   file.delete();
+		    }
+	   }catch(Exception e) {
+		   e.printStackTrace();
+		   return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	   }
+	   return new ResponseEntity<String>("deleted",HttpStatus.OK);
+   }
+   
    
    //전송된 파일의 타입(image인지 아닌지여부확인 메소드) 
    private boolean checkImageType(File file) {

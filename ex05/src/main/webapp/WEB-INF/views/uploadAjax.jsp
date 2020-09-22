@@ -141,6 +141,23 @@ $(document).ready(function(){
  				});
 });
 
+ 		//삭제처리
+ 		$(".uploadResult").on("click","span",function(e){
+               var targetFile = $(this).data("file");
+               var type=$(this).data("type");
+               console.log(targetFile);
+
+               $.ajax({
+                    url: '/deleteFile',
+                    data:{fileName:targetFile, type:type},
+                    dataType:'text',
+                    type:'POST',
+                    success:function(result){
+                        alert(result);
+                        }
+                   });//$.ajax
+ 	 		});
+
 });
 
  		    var uploadResult = $('.uploadResult ul');
